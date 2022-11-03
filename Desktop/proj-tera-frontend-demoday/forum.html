@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Aprenda facil</title>
+</head>
+
+<body onload="auth(), chatAllReceber()">
+
+    <div class="container mt-3">
+        <div class="d-flex">
+            <div class="p-2">
+                <div class="offcanvas offcanvas-start" id="demo">
+                    <div class="offcanvas-header">
+                        <h1 class="offcanvas-title">Perfil</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div class="card" style="width:310px">
+                            <img class="card-img-top foto_perfil" src="imagem/login.png" alt="imagem do perfil"
+                                style="width:100%">
+                            <div class="card-body">
+                                <h4 class="card-title nome_usuario">Nome</h4>
+                                <h4 class="card-text email_usuario">Email</h4>
+                                <p class="card-text">Fullstack</p>
+                                <a href="config.html" class="btn btn-outline-warning">Config</a>
+                                <button type="button" class="btn btn-outline-danger"
+                                    onclick="fazerLogout()">Logout</button>
+                            </div>
+                        </div>
+                        <div class="container mt-3">
+                            <p>Frontend</p>
+                            <div class="progress">
+                                <div class="progress-bar barraFront" role="progressbar" aria-valuemin="0"
+                                    aria-valuemax="100" style="width:0%"></div>
+                            </div>
+                        </div>
+                        <div class="container mt-3">
+                            <p>Backend</p>
+                            <div class="progress">
+                                <div class="progress-bar barraBack" role="progressbar" aria-valuemin="0"
+                                    aria-valuemax="100" style="width:0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3">
+                <button class="btn btn-outline-secondary" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#demo">
+                    Perfil
+                </button>
+                <!-- Button to Open the Modal Chat-->
+                <button type="button" class="btn btn-outline-secondary ms-2" data-bs-toggle="modal"
+                    data-bs-target="#chatModal" onclick="chatReceber()">
+                    <span class="spinner-grow spinner-grow-sm"></span> Chat <span
+                        class="badge bg-danger chat_inbox">0</span>
+                </button>
+            </div>
+            <!-- The Modal Chat-->
+            <div class="modal" id="chatModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 class="modal-title">Administrador</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <p class="chat_resp border p-2">Caixa vazia</p>
+                            <form onsubmit="chatEnvia()">
+                                <div class="mb-3 mt-3">
+                                    <label for="chat_aluno">Enviar mensagem:</label>
+                                    <textarea class="form-control chat_aluno" rows="3" name="text"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-outline-primary">Enviar</button>
+                                <button type="button" class="btn btn-outline-danger"
+                                    onclick="clearChat()">Clear</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-2 flex-fill">
+                <nav class="navbar navbar-expand-sm navbar-dark">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="mynavbar">
+                            <ul class="navbar-nav me-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="plataforma.html">Plataforma</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" href="https://portifolio-tf.netlify.app/"
+                                        target="_blank">Autor</a>
+                                </li>
+                            </ul>
+                            <form class="d-flex">
+                                <input class="form-control me-2 entrada_pesquisa" type="text"
+                                    placeholder="Pesquisar com Google">
+                                <button class="btn btn-outline-secondary botao_pesquisa" type="button">Go</button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="text-center mt-3">Plataforma Educacional Aprenda Fácil</h2>
+    <h4 class="text-center">Deixe aqui sua dúvida e será respondida por um expert</h4>
+    <div class="container bg-muted text-center my-3 p-3 border">
+        <div class="mt-4 p-5 bg-secondary text-white rounded">
+            <p id="forum" class="text-white">Vazio</p>
+        </div>
+        <div class="container mt-3">
+            <form onsubmit="chatAllEnvia()">
+                <div class="mb-3 mt-3">
+                    <label for="comment">Deixe seu comentário:</label>
+                    <textarea class="form-control" rows="5" id="commentAll" name="text"></textarea>
+                </div>
+                <button type="submit" class="btn btn-outline-secondary">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
